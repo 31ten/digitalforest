@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0271077-1023-48b9-96d5-b021971d4778" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\wamp\www\thedigitalforest\.meteor\packages_conflict-20151022-013221" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\thedigitalforest\.meteor\versions_conflict-20151022-013224" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\thedigitalforest\simple-todos.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\thedigitalforest\simple-todos.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\thedigitalforest\simple-todos.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.js" afterPath="$PROJECT_DIR$/client/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mup.json" afterPath="$PROJECT_DIR$/mup.json" />
     </list>
     <ignored path="thedigitalforest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,8 +50,8 @@
       <file leaf-file-name="mup.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mup.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.470297" vertical-offset="264" max-vertical-offset="1144">
-              <caret line="39" column="45" selection-start-line="36" selection-start-column="1" selection-end-line="39" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.437613" vertical-offset="198" max-vertical-offset="1144">
+              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -285,11 +279,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="82" y="79" width="1707" height="912" extended-state="0" />
-    <editor active="false" />
+    <frame x="82" y="79" width="1707" height="912" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36449865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16260162" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982457" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -478,14 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/digitalforest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.451612" vertical-offset="76" max-vertical-offset="1078">
-          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="700">
@@ -494,10 +480,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/digitalforest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.451612" vertical-offset="76" max-vertical-offset="1078">
+          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mup.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.470297" vertical-offset="264" max-vertical-offset="1144">
-          <caret line="39" column="45" selection-start-line="36" selection-start-column="1" selection-end-line="39" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.437613" vertical-offset="198" max-vertical-offset="1144">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding />
         </state>
       </provider>
