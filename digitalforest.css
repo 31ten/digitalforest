@@ -1,0 +1,233 @@
+/* CSS declarations go here */
+
+@font-face {
+    font-family:'31ten-extrabold';
+    src: url('fonts/font-31ten-condensedextrabold_gdi.eot');
+    src: url('fonts/font-31ten-condensedextrabold_gdi.eot?#iefix') format('embedded-opentype'),
+    url('fonts/font-31ten-condensedextrabold_gdi.woff') format('woff'),
+    url('fonts/font-31ten-condensedextrabold_gdi.ttf') format('truetype'),
+    url('fonts/font-31ten-condensedextrabold_gdi.otf') format('opentype'),
+    url('fonts/font-31ten-condensedextrabold_gdi.svg#font-31ten-condensedextrabold') format('svg');
+    font-weight: 750;
+    font-style: normal;
+    font-stretch: condensed;
+    unicode-range: U+0020-25CA;
+}
+
+@font-face {
+	font-family:'31ten-book';
+	src: url('fonts/font-31ten-book_gdi.eot');
+	src: url('fonts/font-31ten-book_gdi.eot?#iefix') format('embedded-opentype'),
+		url('fonts/font-31ten-book_gdi.woff') format('woff'),
+		url('fonts/font-31ten-book_gdi.ttf') format('truetype'),
+		url('fonts/font-31ten-book_gdi.otf') format('opentype'),
+		url('fonts/font-31ten-book_gdi.svg#font-31ten-book') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0-10FFFF;
+}
+
+/* global part */
+
+html,body, h3 {
+    font-family:'31ten-book';
+}
+
+h1 {
+    font-family:'31ten-extrabold';
+}
+
+html,
+body {
+    overflow-x:hidden;
+}
+
+html,
+body,
+#main_wrapper {
+    width: 100%;
+    padding:0px;
+    margin:0px;
+}
+
+#main_wrapper {
+    background: #f8f8f8;
+}
+
+
+#main_wrapper.hidden {
+    display: none;
+}
+
+#main_wrapper.desktop_view .mobile{
+    display: none;
+}
+
+#main_wrapper.mobile_view .desktop {
+    display: none;
+}
+
+#main_wrapper.mobile_view {
+
+}
+
+
+/* desktop part */
+.main_title.desktop {
+    position:fixed;
+    width: 100%;
+    display: block;
+    text-align:center;
+    top:25%;
+    font-size: 30px;
+    font-family:'31ten-book';
+    z-index: 1000;
+}
+
+#toggle_sound {
+
+}
+
+#toggle_sound.muted {
+
+}
+
+.main_title.desktop .title_hidden {
+
+}
+
+.tree_count {
+    padding: 7px ;
+    text-align: center;
+    color: black;
+    font-size: 12px;
+    position: absolute;
+    width: 98%;
+}
+
+.credits {
+    color: black;
+    font-size: 12px;
+    position: absolute;
+    right: 40px;
+    bottom: 10px;
+}
+
+.main_title.desktop h1 {
+    color: rgba(255, 0, 0, 0.3);
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#display_can {
+    padding:0px;
+    margin:0px;
+}
+
+.buttons_desktop {
+    position:fixed;
+    z-index:10000;
+}
+
+.qrcode {
+    background: white;
+    position: fixed;
+    bottom: 10px;
+    left:10px;
+    width: 100px;
+    font-size: 12px;
+    padding: 10px 10px 0px 10px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+
+/* mobile part */
+h1.mobile {
+    font-size: 20px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.explanations_mobile {
+    margin: 20px 20px;
+    clear: both;
+}
+
+#drawing_can {
+    background: white;
+}
+
+
+.buttons_mobile_wrapper {
+    clear: both;
+    height: 40px;
+}
+
+.buttons_mobile {
+    width: 99%;
+    margin: 20px 0px 0px 20px;
+}
+
+.buttons_mobile button {
+    width: 130px;
+    display: block;
+    float:left;
+    margin-right: 10px;
+    background: none;
+    border: 2px black solid;
+    height: 40px;
+}
+
+/* animation code */
+
+@keyframes border-color {
+    0%   { border-color: #c7ffd4; }
+    50% { border-color: #ffd6c8; }
+    100% { border-color: #c7ffd4; }
+}
+
+@keyframes wind {
+  0% {
+    transform:  translate(0px,0px)  skewX(0deg) ;
+  }
+  50% {
+      transform: translate(10px, 0px) skewX(-5deg);
+  }
+  100% {
+    transform:  translate(0px,0px)  skewX(0deg) ;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+  }
+  50% {
+  }
+}
+
+.breathe  {
+    animation-name: breathe;
+    animation-duration: 30s;
+    animation-iteration-count:infinite;
+}
+
+.color_anim {
+    animation-name: color_anim;
+    animation-duration: 10s;
+    animation-iteration-count:infinite;
+}
+
+
+/* The element to apply the animation to */
+.wind {
+    animation-name: wind;
+    animation-duration: 10s;
+    animation-iteration-count:infinite;
+}
+
