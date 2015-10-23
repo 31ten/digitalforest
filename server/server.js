@@ -4,7 +4,7 @@ Meteor.publish("trees", function () {
     return Trees.find();
 });
 
-var nb_max_trees = 20;
+var nb_max_trees = 100;
 
 Meteor.methods({
 	addSquare: function(session_id,square) {
