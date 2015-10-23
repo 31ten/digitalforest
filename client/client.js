@@ -290,8 +290,8 @@ Meteor.startup(function() {
         audio.play();
         audio.loop = true;
         document.addEventListener('click', function(e) {
-            e.preventDefault();
             if ( e.target.id == "toggle_sound" ) {
+                e.preventDefault();
                 if(!audio.muted){
                     audio.muted = true;
                      document.getElementById("toggle_sound").text =  "Off";
