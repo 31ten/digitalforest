@@ -1,0 +1,43 @@
+<head>
+    <title>The Digital Forest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div id="main_wrapper" class="hidden">
+
+    <!-- desktop part -->
+    <div class="buttons_desktop">
+        <!--<button id="erase_all" class="desktop">Erase All</button>-->
+    </div>
+    <div class="tree_count desktop">Shhhhh, {{trees_count.count}} {{trees_count.name}} are growing</div>
+    <div class="main_title desktop">
+        <img class="title_hidden" src="img/title.png" width="400px"/>
+    </div>
+    <canvas id="display_can" class="desktop wind"></canvas>
+        <div class="credits desktop">A
+            <a href="https://31ten.network" target="_blank">31TEN Labs Experimentation</a>
+            built on top of <a href="http://meteor.com" target="_blank">MeteorJS</a> |
+            <a href="https://github.com" target="_blank">Source Code</a> |
+            Music : <a id="toggle_sound" href="#"> On </a>
+        </div>
+    <div class="qrcode desktop">
+        <img src="img/qrcode.png" width="100px"/>
+        <p>Scan the QRcode with your phone to draw your tree</p>
+    </div>
+
+    <!-- mobile part -->
+    <h1 class="mobile" >DRAW A TREE</h1>
+    <canvas id="drawing_can" class="mobile color_anim" height="400" ></canvas>
+    <div class="buttons_mobile">
+        <div class="buttons_mobile_wrapper">
+            <button id="erase_tree" class="mobile debug">Erase Tree</button>
+            <button id="clear_session_cookie" class="mobile debug">Create a new Tree</button>
+        </div>
+    </div>
+    <div class="explanations_mobile mobile">
+        Please add your own tree to the forest by drawing on the blank canvas on the top
+    </div>
+</div>
+</body>
+
