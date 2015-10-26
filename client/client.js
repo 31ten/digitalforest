@@ -385,6 +385,9 @@ Meteor.startup(function() {
         },
         changed : function (tree) {
             drawName (display_ctx, tree.nameTree, tree.position_display);
+        },
+        added: function (tree) {
+            drawName (display_ctx, tree.nameTree, tree.position_display);
         }
     });
 
@@ -393,7 +396,8 @@ Meteor.startup(function() {
       Trees.find().forEach(function(tree) {
         Squares.find({treeId: tree._id}).forEach(function(square) {
            drawSquare(display_ctx, square, tree.position_display);
-        })
+        });
+          drawName (display_ctx, tree.nameTree, tree.position_display);
       });
     }
 
