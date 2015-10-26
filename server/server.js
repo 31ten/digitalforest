@@ -11,7 +11,7 @@ var nb_max_trees = 100;
 Meteor.methods({
 	addSquare: function(session_id, square) {
         //look for the session id
-        var searched_session_tree = Trees.findOne({"session_id" : session_id});
+        var searched_session_tree = Trees.findOne({session_id : session_id});
             //if found,
             if(searched_session_tree){
 
@@ -35,20 +35,24 @@ Meteor.methods({
                 var new_session_tree = {};
                 new_session_tree.session_id = session_id;
                 new_session_tree.createdAt =  new Date();
-                new_session_tree.squares = [];
-                new_session_tree.squares.push(square);
+
                 //give it a place
                 new_session_tree.position_display = {};
                 new_session_tree.position_display.x = Math.floor((Math.random() * 70) + 10);
                 new_session_tree.position_display.y = Math.floor((Math.random() * 70) + 10);
-                Trees.insert(new_session_tree);
+                var treeId = Trees.insert(new_session_tree);
+                square.treeId = treeId;
+                Squares.insert(square);
             }
 	},
     removeTree: function(session_id) {
-		Trees.remove({"session_id" : session_id});
+      var tree = Trees.findOne({session_id: session_id});
+		  Trees.remove(tree);
+      Squares.remove({treeId: tree._id});
 	},
     removeAllTrees: function() {
-		Trees.remove({});
+		  Trees.remove({});
+      Squares.remove({});
 	}
 });
 

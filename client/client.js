@@ -119,6 +119,7 @@ Meteor.startup(function() {
 
     function erase_tree() {
         drawing_ctx.clearRect(0, 0, drawing_ctx.canvas.width, drawing_ctx.canvas.height);
+      console.log(session_id);
         Meteor.call("removeTree",session_id);
     }
 
@@ -343,6 +344,22 @@ Meteor.startup(function() {
         drawSquare(display_ctx, square, tree.position_display);
       }
     });
+
+    Trees.find().observe({
+      removed: function () {
+        redrawAllTrees();
+      }
+    });
+
+    function redrawAllTrees() {
+      clean_display();
+      Trees.find().forEach(function(tree) {
+        Squares.find({treeId: tree._id}).forEach(function(square) {
+           drawSquare(display_ctx, square, tree.position_display);
+        })
+      });
+    }
+
 
     function mouseMoveEventHandler(e) {
         createLine(e,display_can,function(square){
