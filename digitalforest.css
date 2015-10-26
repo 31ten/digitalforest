@@ -157,6 +157,8 @@ h1.mobile {
 .explanations_mobile {
     margin: 20px 20px;
     clear: both;
+    font-size: 10px;
+    display: block;
 }
 
 #drawing_can {
@@ -209,6 +211,15 @@ h1.mobile {
   }
   50% {
   }
+}
+
+#name_tree_form {
+    margin-bottom:10px;
+}
+
+#name_tree_form input[type='text']{
+    padding:7px 15px;
+    border: 2px solid black;
 }
 
 .breathe  {

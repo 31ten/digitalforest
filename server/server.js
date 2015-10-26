@@ -7,6 +7,14 @@ Meteor.publish("trees", function () {
 var nb_max_trees = 100;
 
 Meteor.methods({
+    addNameTree: function(session_id,nameTree) {
+        var searched_session_tree = Trees.findOne({"session_id" : session_id});
+         console.log("addNameTree");
+        if(searched_session_tree){
+            console.log("session found, name inserted");
+            Trees.update({_id:searched_session_tree._id},{$set:{"nameTree":nameTree}});
+        }
+    },
 	addSquare: function(session_id,square) {
         //look for the session id
         var searched_session_tree = Trees.findOne({"session_id" : session_id});
