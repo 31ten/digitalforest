@@ -1,19 +1,26 @@
-Trees = new Meteor.Collection('trees');
-
 Meteor.publish("trees", function () {
     return Trees.find();
+});
+
+Meteor.publish("squares", function () {
+    return Squares.find();
 });
 
 var nb_max_trees = 100;
 
 Meteor.methods({
-	addSquare: function(session_id,square) {
+	addSquare: function(session_id, square) {
         //look for the session id
         var searched_session_tree = Trees.findOne({"session_id" : session_id});
             //if found,
             if(searched_session_tree){
-                searched_session_tree.squares.push(square);
-                Trees.update({_id:searched_session_tree._id},{$set:{"squares":searched_session_tree.squares}});
+
+                square.treeId = searched_session_tree._id;
+
+                Squares.insert(square);
+
+                //searched_session_tree.squares.push(square);
+                //Trees.update({_id:searched_session_tree._id},{$set:{"squares":searched_session_tree.squares}});
             }else{
                 //no square with the session id
                 //check how many trees
