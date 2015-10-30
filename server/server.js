@@ -27,8 +27,6 @@ function is_grid_position_available (x,y) {
         }
     ).count();
 
-    console.log("is_grid_position_available > nb_occurences " + nb_occurences);
-
     if(nb_occurences > 0) {
         return false
     }else{
@@ -62,9 +60,9 @@ Meteor.publish("squares", function () {
 Meteor.methods({
     addNameTree: function(session_id,nameTree) {
         var searched_session_tree = Trees.findOne({"session_id" : session_id});
-         console.log("addNameTree");
+         //console.log("addNameTree");
         if(searched_session_tree){
-            console.log("session found, name inserted");
+            //console.log("session found, name inserted");
             Trees.update({_id:searched_session_tree._id},{$set:{"nameTree":nameTree}});
         }
     },
