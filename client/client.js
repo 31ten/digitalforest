@@ -1,7 +1,7 @@
 var display_canvas_width = 1200;
 var display_canvas_height = 600;
-var grid_unit_width = 40;
-var grid_unit_height = 40;
+var grid_unit_width = 80;
+var grid_unit_height = 100;
 
 window.mobilecheck = function() {
   var check = false;
@@ -69,7 +69,8 @@ Meteor.startup(function() {
     }
 
     function generate_tree_id () {
-        if(getCookie("tree_session_id") != ""){
+        //desactivate the cookie system for now
+        if(getCookie("tree_session_id") != "" && 1 == 0 ){
             //cookie already exists, get the id
             var session_id = getCookie("tree_session_id");
             console.log("cookie exists, take the tree_session_id :"+session_id);
@@ -107,9 +108,8 @@ Meteor.startup(function() {
     function canvasResize (){
         var w = window.innerWidth;
         var h = window.innerHeight;
-        display_can.setAttribute('width', w-50);
-        drawing_can.setAttribute('width', w);
-        display_can.setAttribute('height', h-50);
+        display_can.setAttribute('width', w);
+        display_can.setAttribute('height', h-5);
     }
 
     canvasResize ();
@@ -279,23 +279,13 @@ Meteor.startup(function() {
             line.from.x = line.from.x + ((position.x * grid_unit_width) );
             line.from.x = (line.from.x / display_canvas_width)*ctx.canvas.width;
             line.from.y = line.from.y + ((position.y * grid_unit_height) );
-            line.from.y = (line.from.y / display_canvas_height)*ctx.canvas.height;
+            line.from.y = ((line.from.y / display_canvas_height)*ctx.canvas.height);
 
             line.to.x = line.to.x + ((position.x * grid_unit_width) );
             line.to.x = (line.to.x / display_canvas_width)*ctx.canvas.width;
             line.to.y = line.to.y + ((position.y * grid_unit_height) );
-            line.to.y = (line.to.y / display_canvas_height)*ctx.canvas.height;
+            line.to.y = ((line.to.y / display_canvas_height)*ctx.canvas.height);
 
-
-
-            /*
-            console.log(line);
-            line.from.x = line.from.x + (position.x * grid_unit_width);
-            line.to.x = line.to.x + (position.x * grid_unit_width);
-            line.from.y = line.from.y + (position.y * grid_unit_height);
-            line.to.y = line.to.y + (position.y  * grid_unit_height);
-            reduc_square_param = reduction_param;
-            */
             console.log(line);
         }
 

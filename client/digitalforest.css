@@ -200,7 +200,7 @@ h1.mobile {
     transform:  translate(0px,0px)  skewX(0deg) ;
   }
   50% {
-      transform: translate(10px, 0px) skewX(-8deg);
+      transform: translate(0px, 0px) skewX(0deg);
   }
   100% {
     transform:  translate(0px,0px)  skewX(0deg) ;

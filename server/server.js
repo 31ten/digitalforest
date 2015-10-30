@@ -1,7 +1,8 @@
 var display_canvas_width = 1200;
-var display_canvas_height = 600;
-var grid_unit_width = 40;
-var grid_unit_height = 40;
+var display_canvas_height = 800;
+var grid_unit_width = 80;
+var grid_unit_height = 100;
+var nb_max_trees = (display_canvas_width/grid_unit_width)*(display_canvas_height/grid_unit_height);
 
 function random_scale(a,b) {
    return Math.floor((Math.random() * b) + a);
@@ -56,7 +57,7 @@ Meteor.publish("squares", function () {
     return Squares.find();
 });
 
-var nb_max_trees = 100;
+
 
 Meteor.methods({
     addNameTree: function(session_id,nameTree) {
