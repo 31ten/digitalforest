@@ -6,6 +6,6 @@ A MeteorJS Experimentation where users can draw Tree on their phone that will be
 
 The main concept was developed for the Barcamp conference 2015 in Shanghai
 
-Check the live site and draw your tree at
+Check the live site and draw your tree at [digitalforest.31ten.network](https://digitalforest.31ten.network)
 
-Built by [Dotgreg](https://twitter.com/GregO0s) of [www.31ten.network](http://www.31ten.network/) with the help of [@djules75](https://twitter.com/djules75)
+Built by [@dotgreg](https://twitter.com/GregO0s) of [www.31ten.network](http://www.31ten.network/) with the help of [@djules75](https://twitter.com/djules75)
