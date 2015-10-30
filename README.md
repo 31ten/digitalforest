@@ -1,4 +1,4 @@
-# digitalforest
+# THE DIGITAL FOREST
 
 ![alt text](http://digitalforest.31ten.network/img/minimal-browser.png "Overview of the Experimentation")
 
