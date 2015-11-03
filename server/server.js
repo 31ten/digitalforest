@@ -47,6 +47,11 @@ function set_new_grid_position (w,h,treeW,treeH) {
     }
 }
 
+//modif
+Meteor.publish("trees_mobile", function(session_id) {
+    return Trees.find({session_id : session_id});
+});
+
 Meteor.publish("trees", function () {
     return Trees.find();
 });
@@ -66,21 +71,29 @@ Meteor.methods({
             Trees.update({_id:searched_session_tree._id},{$set:{"nameTree":nameTree}});
         }
     },
-	addSquare: function(session_id,square) {
+    //mo dif
+    addSquare_simplified: function(square) {
+        console.log("did it");
+        Squares.insert(square);
+    },
+    //modif
+	addSquare: function(session_id, square) {
 
         //look for the session id
         var searched_session_tree = Trees.findOne({session_id : session_id});
             //if found,
-            var position = set_new_grid_position (display_canvas_width,display_canvas_height,grid_unit_width,grid_unit_height)
+            
             if(searched_session_tree){
-
                 square.treeId = searched_session_tree._id;
 
                 Squares.insert(square);
+                console.log("not possible");
 
                 //searched_session_tree.squares.push(square);
                 //Trees.update({_id:searched_session_tree._id},{$set:{"squares":searched_session_tree.squares}});
             }else{
+                console.log("Tree created");
+                var position = set_new_grid_position (display_canvas_width,display_canvas_height,grid_unit_width,grid_unit_height);
                 //no square with the session id
                 //check how many trees
                 var nb_trees = Trees.find().count();

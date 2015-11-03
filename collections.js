@@ -1,2 +1,2 @@
-Trees = new Meteor.Collection('trees');
-Squares = new Meteor.Collection('squares');
+Trees = new Meteor.Collection('trees_4');
+Squares = new Meteor.Collection('squares_4');

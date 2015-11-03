@@ -85,7 +85,13 @@ Meteor.startup(function() {
     }
 
     var session_id = generate_tree_id();
-
+    Session.set("session_id", session_id);
+    //modif
+    if (window.mobilecheck()) {
+        console.log("toto");
+        Meteor.subscribe("trees_mobile", Session.get("session_id"));
+    }
+    
 
     var d = document.getElementById("main_wrapper");
     if(window.mobilecheck()){
@@ -236,7 +242,22 @@ Meteor.startup(function() {
                     line.squareSize1 = line.squareSize1/reduction_param;
                     line.squareSize2 = line.squareSize1/reduction_param;
 
-                    Meteor.call("addSquare", session_id, line);
+                    //modif
+                    var element_custom = Trees.find({session_id: Session.get("session_id")}).fetch();
+
+                    console.log("yes");
+                    console.log(Session.get("session_id"));
+                    console.log(element_custom);
+                    if (element_custom.length > 0) {
+                        line.treeId = element_custom[0]._id;
+                        console.log("yes");
+                        Meteor.call("addSquare_simplified", line);
+                    }
+                    else {
+                        console.log("no");
+                        Meteor.call("addSquare", session_id, line);
+                    }
+                    
 
                     line.from = {};
                     line.to = {};
@@ -349,13 +370,14 @@ Meteor.startup(function() {
             erase_tree();
         }
         if ( e.target.id == "clear_session_cookie" ) {
+            console.log("session before: " + Session.get("session_id"));
             setCookie("tree_session_id","",1);
             session_id = generate_tree_id();
-            drawing_ctx.clearRect(0, 0, drawing_ctx.canvas.width, drawing_ctx.canvas.height);
-        }
-        if ( e.target.id == "clear_session_cookie" ) {
-            setCookie("tree_session_id","",1);
-            session_id = generate_tree_id();
+            Session.set("session_id", session_id);
+            console.log("session after: " + Session.get("session_id"));
+            Meteor.subscribe("trees_mobile", Session.get("session_id"), function() {
+                console.log("data loaded");
+            });
             drawing_ctx.clearRect(0, 0, drawing_ctx.canvas.width, drawing_ctx.canvas.height);
         }
         // Prevent default browser form submit
