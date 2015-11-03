@@ -88,7 +88,7 @@ Meteor.startup(function() {
     Session.set("session_id", session_id);
     //modif
     if (window.mobilecheck()) {
-        console.log("toto");
+        //console.log("toto");
         Meteor.subscribe("trees_mobile", Session.get("session_id"));
     }
     
@@ -133,8 +133,8 @@ Meteor.startup(function() {
 
     function erase_tree() {
         drawing_ctx.clearRect(0, 0, drawing_ctx.canvas.width, drawing_ctx.canvas.height);
-      console.log(session_id);
-        Meteor.call("removeTree",session_id);
+      //console.log(session_id);
+        Meteor.call("removeTree",Session.get("session_id"));
     }
 
     function clean_display() {
@@ -143,7 +143,7 @@ Meteor.startup(function() {
 
 
     function mouseDownEventHandler(e) {
-        console.log("mouseDownEventHandler");
+        //console.log("mouseDownEventHandler");
         paint = true;
         if (paint) {
         }
@@ -255,7 +255,7 @@ Meteor.startup(function() {
                     }
                     else {
                         console.log("no");
-                        Meteor.call("addSquare", session_id, line);
+                        Meteor.call("addSquare", Session.get("session_id"), line);
                     }
                     
 
@@ -370,13 +370,13 @@ Meteor.startup(function() {
             erase_tree();
         }
         if ( e.target.id == "clear_session_cookie" ) {
-            console.log("session before: " + Session.get("session_id"));
+            //console.log("session before: " + Session.get("session_id"));
             setCookie("tree_session_id","",1);
             session_id = generate_tree_id();
             Session.set("session_id", session_id);
-            console.log("session after: " + Session.get("session_id"));
+            //console.log("session after: " + Session.get("session_id"));
             Meteor.subscribe("trees_mobile", Session.get("session_id"), function() {
-                console.log("data loaded");
+                //console.log("data loaded");
             });
             drawing_ctx.clearRect(0, 0, drawing_ctx.canvas.width, drawing_ctx.canvas.height);
         }
@@ -389,7 +389,7 @@ Meteor.startup(function() {
             var name_obj = {};
             for(i=0;i<e.target.length;i++){
                 name_obj[e.target[i].name] = e.target[i].value;
-                name_obj["session_id"] = session_id;
+                name_obj["session_id"] = Session.get("session_id");
             }
             document.getElementById("nameTreeInput").value = "";
             //console.log(name_obj);
@@ -411,14 +411,39 @@ Meteor.startup(function() {
     //    }
     //});
 
+    var my_associative_array = new Array();
+
+
+    function look_for_tree(treeId) {
+        var p = 0;
+        for (var i = my_associative_array.length - 1; i > 0; i--) {
+            if (my_associative_array[i].treeId == treeId) {
+                //console.log(p);
+                return my_associative_array[i].position;
+            }
+            p++;
+        }
+        return undefined;
+    }
+
     Squares.find().observe({
       added: function (square) {
-        var tree = Trees.findOne(square.treeId);
-        drawSquare(display_ctx, square, tree.position_display);
+        var position = look_for_tree(square.treeId);
+        if (position) {
+            //console.log("working");
+            drawSquare(display_ctx, square, position);
+        }
+        else {
+            var tree = Trees.findOne(square.treeId);
+            if (tree) {
+                my_associative_array.push({treeId: square.treeId, position: tree.position_display});
+                drawSquare(display_ctx, square, tree.position_display);
+            }         
+        }
       }
     });
 
-    Trees.find().observe({
+    Trees.find().observeChanges({
         removed: function () {
             redrawAllTrees();
         },
@@ -432,6 +457,8 @@ Meteor.startup(function() {
 
     function redrawAllTrees() {
       clean_display();
+      console.log("here?");
+
       Trees.find().forEach(function(tree) {
         Squares.find({treeId: tree._id}).forEach(function(square) {
            drawSquare(display_ctx, square, tree.position_display);

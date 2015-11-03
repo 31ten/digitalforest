@@ -60,7 +60,9 @@ Meteor.publish("squares", function () {
     return Squares.find();
 });
 
-
+Meteor.startup(function () {  
+  Trees._ensureIndex({ "session_id": 1});
+});
 
 Meteor.methods({
     addNameTree: function(session_id,nameTree) {
@@ -73,7 +75,7 @@ Meteor.methods({
     },
     //mo dif
     addSquare_simplified: function(square) {
-        console.log("did it");
+        //console.log("did it");
         Squares.insert(square);
     },
     //modif
@@ -87,7 +89,7 @@ Meteor.methods({
                 square.treeId = searched_session_tree._id;
 
                 Squares.insert(square);
-                console.log("not possible");
+                //console.log("not possible");
 
                 //searched_session_tree.squares.push(square);
                 //Trees.update({_id:searched_session_tree._id},{$set:{"squares":searched_session_tree.squares}});
@@ -122,8 +124,11 @@ Meteor.methods({
 	},
     removeTree: function(session_id) {
       var tree = Trees.findOne({session_id: session_id});
-		  Trees.remove(tree);
+      if (tree) {
+        Trees.remove(tree);
       Squares.remove({treeId: tree._id});
+      }
+		  
 	},
     removeAllTrees: function() {
 		  Trees.remove({});
