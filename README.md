@@ -1,6 +1,7 @@
 # THE DIGITAL FOREST
 
-![alt text](http://digitalforest.31ten.network/img/minimal-browser.png "Overview of the Experimentation")
+
+![alt text](http://res.cloudinary.com/dotgreg/image/upload/v1507722171/minimal-browser_m7kyjx.png "Overview of the Experimentation")
 
 A MeteorJS Experimentation where users can draw Tree on their phone that will be updating the digital forest
 
